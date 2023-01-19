@@ -1,6 +1,6 @@
-from pokedex.models import Pokemon
+from pokedex.models import Pokemon, Type
 from rest_framework import generics
-from .serializer import PokemonSerializer
+from .serializer import PokemonSerializer, TypeSerializer
 
 
 
@@ -11,3 +11,11 @@ class PokemonList(generics.ListAPIView):
 class PokemonDetail(generics.RetrieveAPIView):
     queryset=Pokemon.objects.all()
     serializer_class=PokemonSerializer
+    
+class TypeList(generics.ListAPIView):
+    queryset=Type.objects.all
+    serializer_class=TypeSerializer
+    
+class TypeDetail(generics.RetrieveAPIView):
+    queryset=Type.objects.all()
+    serializer_class=TypeSerializer
