@@ -50,4 +50,4 @@ class DataSaver:
             for poke_type in poke_types:
                 id = dico_type[poke_type]
                 poke = dico_poke[identifier]
-                poke.types.add(id)
+                poke.type.add(id)
