@@ -2,6 +2,7 @@ import requests
 from .models import Pokemon, Type
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any
+from django.db import transaction
 
 
 class DataRetriever:
@@ -46,8 +47,8 @@ class DataSaver:
         dico_types = data_retriever.get_poke_types()
         dico_type = {poke_type.name: poke_type.pk for poke_type in Type.objects.all()}
         dico_poke = {pokemon.identifier: pokemon for pokemon in Pokemon.objects.all()}
-        for identifier, poke_types in dico_types.items():
-            for poke_type in poke_types:
-                id = dico_type[poke_type]
+        with transaction.atomic():
+            for identifier, poke_types in dico_types.items():
                 poke = dico_poke[identifier]
-                poke.type.add(id)
+                ids = [dico_type[poke_type] for poke_type in poke_types]
+                poke.type.add(*ids)
