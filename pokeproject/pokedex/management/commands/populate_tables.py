@@ -1,8 +1,9 @@
-from django.core.management.base import BaseCommand
-from pokedex.utils import DataSaver
-from pokedex.models import Pokemon
-from pokedex.models import Type
 from typing import Any
+
+from django.core.management.base import BaseCommand
+
+from pokedex.models import Pokemon, Type
+from pokedex.utils import DataSaver
 
 
 class Command(BaseCommand):

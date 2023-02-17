@@ -1,5 +1,7 @@
-from pokedex.models import Pokemon, Type
 from rest_framework import generics
+
+from pokedex.models import Pokemon, Type
+
 from .serializer import PokemonSerializer, TypeSerializer
 
 

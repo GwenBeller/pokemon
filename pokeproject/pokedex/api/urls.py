@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import PokemonList, PokemonDetail, TypeList, TypeDetail
+
+from .views import PokemonDetail, PokemonList, TypeDetail, TypeList
 
 # from rest_framwork.routers import DefaultRouter
 

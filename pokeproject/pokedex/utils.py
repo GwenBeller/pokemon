@@ -1,8 +1,10 @@
-import requests
-from .models import Pokemon, Type
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any
+
+import requests
 from django.db import transaction
+
+from .models import Pokemon, Type
 
 
 class DataRetriever:
@@ -52,3 +54,4 @@ class DataSaver:
                 poke = dico_poke[identifier]
                 ids = [dico_type[poke_type] for poke_type in poke_types]
                 poke.type.add(*ids)
+                
